@@ -45,6 +45,13 @@ describe('UserTest', () => {
         })
         test('Login', async () => {
             await supertest(app)
+                    .post(userRoute + '/signup')
+                .send({
+                    name: "Sample",
+                    email: "sample@mail.com",
+                    password: "samplePassW0rd567",
+                    blogs: []
+                })
                 .post(userRoute + '/login')
                 .send({
                     email: "sample@mail.com",
