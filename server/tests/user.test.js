@@ -31,11 +31,29 @@ describe('UserTest', () => {
     describe('PostTest', () => {
         test('PostValue', async () => {
     await supertest(app)
-        .post(userRoute)
+        .post(userRoute + '/signup')
+        .send({
+            name: "Sample",
+            email: "sample@mail.com",
+            password: "samplePassW0rd567",
+            blogs: []
+        })
         .expect(201)
         .then((response) => {
 
         });
         })
+        test('Login', async () => {
+            await supertest(app)
+                .post(userRoute + '/login')
+                .send({
+                    email: "sample@mail.com",
+                    password: "samplePassW0rd567"
+                })
+                .expect(200)
+                .then((response) => {
+        
+                });
+                })
     })
 })
